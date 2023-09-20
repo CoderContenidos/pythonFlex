@@ -2,6 +2,7 @@ from django.shortcuts import render
 from datetime import datetime
 from django.http import HttpResponse
 from django.template import Template, Context
+from inicio.models import Mascota
 
 
 def anio_de_nacimiento(request, edad):
@@ -17,3 +18,8 @@ def bienvenida(request):
 
 def inicio(request):
     return render(request, 'inicio/inicio.html')
+
+def crear_mascota(request, nombre, edad):
+    mascota = Mascota(nombre=nombre, edad=edad, fecha=datetime.now())
+    mascota.save()
+    return render(request, 'inicio/crear_mascota.html', {'mascota': mascota})
