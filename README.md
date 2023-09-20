@@ -109,9 +109,9 @@ Buscar en [starbootstrap](https://startbootstrap.com/?showAngular=false&showPro=
 
 ### Actividad 1: Formularios y listado
 
-Crear un nuevo modelo Paleta (atributos: marca, modelo, anio, nueva), el cual debera tener una vista para el formulario de creacion y otra para el listado de paletas creadas (esta ultima debera incluir un formulario de busqueda).
+Crear un nuevo modelo Paleta con 4 atributos: marca(charfield), modelo(charfield), anio(integerfield), nueva(booleanfield). El modelo debera tener una vista para el formulario de creacion y otra para el listado de paletas creadas (esta ultima debera incluir un formulario de busqueda).
 
-**AVISO**: Los formularios de creacion y busqueda tambien deben crearse en esta actividad. El atributo nueva debera ser un BooleanField.
+**AVISO**: Los formularios de creacion y busqueda tambien deben crearse en esta actividad.
 
 ### Actividad 2: Mejora de templates y panel de admin
 
@@ -120,3 +120,27 @@ Acomodar los templates para que implementen herencia, mitigando la repeticion de
 ### Actividad 3: Apartado admin
 
 Registrar los modelos en el apartado de admin. Luego acceder al mismo y probar crear, modificar, ver, eliminar paletas. Agregar en los modelos registrados el metodo magico `__str__` para que el listado del admin sea mas legible.
+
+## Semana 12
+
+### Actividad 1: Edita y Borra
+
+Al modelo paleta agregarle una vista para la actualizar datos y otra para eliminar paletas. (No utilizar Clases Basadas en Vistas)
+En este punto, modificar el nav de la app para que a la vista de creacion se acceda desde la vista de busqueda/listado y el acceso a actualizar o borrar esten en botones junto a cada paleta del listado.
+
+**IMPORTANTE**: Para no requerir validar en la vista de que tipo tiene que ser el parametro que se pasa por la url podemos en la url cuando definimos el nombre del parametro, ejemplo `'paletas/editar/<paleta_id>/'`, indicarle de que tipo queremos que nuestra app detecte que va a ser, ejemplo `'paletas/editar/<int:paleta_id>/'`.
+
+### Actividad 2: CBV
+
+Crear un nuevo modelo PelucheAnimal con 4 atributos: animal(charfield), altura(floatfield), fecha(datefield). El modelo debera contar con una CBV para cada una de las siguientes funcionalidades: crear, listar (incluir el buscador), editar, eliminar y mostrar mas detalles del mismo. No olvidar registrar el modelo en el apartado de admin.  
+**IMPORTANTE**: En la CBV del listado se deben encontrar los accesos a todas las demas vistas, esta debe ser la unica accesible desde la barra de navegacion de la pagina.  
+
+**EXTRA**: Podes crear otra app llamada peluche y aca contener todo lo relacionado a PelucheAnimal (y tal vez a futuro sobre peluches en general).
+
+### Actividad 3: Autenticacion
+
+Agregarle al proyecto una nueva app llamada cuentas y luego:
+
+1. Agregar a cuentas un vista para el login (usar un formulario custom que pida el mail ademas de el usuario y la contraseña) y una vista para el logout.
+2. Ahora, una vista para que un usuario pueda registrarse en nuestra app.
+3. Agregar a las vistas de edicion y borrado de los modelos creados hasta el momento (Paleta y PelucheAnimal) el decorador o mixin, segun corresponda, para limitar el acceso aestas funcionalidades a personas que no estan logueadas.

@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block title_head %}Paleta borrada {% endblock title_head %} {% block h1_header %}Paleta
+borrada {%endblock h1_header %} {% block main_content %}
+<p>{{mensaje}}</p>
+<p>Se borro correctamente la paleta.</p>
+<p>
+    <a href={% url "buscar_paleta" %}>Volver a listado</a>
+</p>
+{% endblock main_content %}

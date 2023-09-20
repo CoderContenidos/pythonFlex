@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import datetime
 from django.http import HttpResponse
 from django.template import Template, Context
@@ -26,17 +26,25 @@ def crear_mascota(request, nombre, edad):
     return render(request, 'inicio/crear_mascota.html', {'mascota': mascota})
 
 def crear_paleta(request):
-      if request.method == "POST":
-            paleta_formulario = PaletaFormulario(request.POST)
-            if paleta_formulario.is_valid():
-                  informacion = paleta_formulario.cleaned_data
-                  paleta = Paleta(marca=informacion["marca"], modelo=informacion["modelo"], anio=informacion["anio"], nueva=informacion["nueva"])
-                  paleta.save()
-                  paleta_formulario = PaletaFormulario()
-                  return render(request, "inicio/crear_paleta.html", {'paleta_formulario': paleta_formulario,'mensaje': 'Se creo correctamente la paleta.'})
-      else:
-        paleta_formulario = PaletaFormulario()
-      return render(request, "inicio/crear_paleta.html", {"paleta_formulario": paleta_formulario})
+    mensaje = ''
+    if request.method == "POST":
+        paleta_formulario = PaletaFormulario(request.POST)
+        if paleta_formulario.is_valid():
+            informacion = paleta_formulario.cleaned_data
+            paleta = Paleta(marca=informacion["marca"], modelo=informacion["modelo"], anio=informacion["anio"], nueva=informacion["nueva"])
+            paleta.save()
+            
+            # v1
+            mensaje = 'Se creo correctamente la paleta.'
+            
+            # v2 
+            # return redirect('buscar_paleta')
+        else:
+            return render(request, "inicio/crear_paleta.html", {'paleta_formulario': paleta_formulario,'mensaje': mensaje})
+            
+        
+    paleta_formulario = PaletaFormulario()
+    return render(request, "inicio/crear_paleta.html", {"paleta_formulario": paleta_formulario, 'mensaje':mensaje})
   
 def buscar_paleta(request):
     modelo = request.GET.get('modelo', '')
@@ -44,3 +52,31 @@ def buscar_paleta(request):
     paleta_formulario = PaletaFormularioBusqueda()
     return render(request, 'inicio/buscar_paleta.html', {'paleta_formulario': paleta_formulario, 'paletas': paletas, 'modelo': modelo})
     
+def editar_paleta(request, paleta_id):
+    paleta = Paleta.objects.get(id=paleta_id)
+    mensaje = ''
+    if request.method == "POST":
+        paleta_formulario = PaletaFormulario(request.POST)
+        if paleta_formulario.is_valid():
+            informacion = paleta_formulario.cleaned_data
+            paleta.marca = informacion['marca']
+            paleta.modelo = informacion['modelo']
+            paleta.anio = informacion['anio']
+            paleta.nueva = informacion['nueva']
+            paleta.save()
+            
+            #v1
+            mensaje = 'Se edito correctamente la paleta.'
+        
+            # v2 
+            # return redirect('buscar_paleta')
+    else:
+        paleta_formulario = PaletaFormulario(initial={
+            'marca': paleta.marca,'modelo': paleta.modelo,
+            'anio': paleta.anio,'nueva': paleta.nueva,})
+    return render(request, "inicio/editar_paleta.html", {"paleta_formulario": paleta_formulario, 'mensaje': mensaje})
+
+def borrar_paleta(request, paleta_id):
+    paleta = Paleta.objects.get(id=paleta_id)
+    paleta.delete()
+    return render(request, 'inicio/borrar_paleta.html')

@@ -1,18 +1,18 @@
 {% extends "base.html" %} {% block title_head %}Listado paletas{% endblock title_head %} {% block h1_header %} Listado
 paletas{%endblock h1_header %} {% block main_content %}
+<a href={% url "crear_paleta" %}>Crear Paleta</a>
 <form action="">
-    <table>
-        {{paleta_formulario}}
-    </table>
+    {{paleta_formulario}}
     <input type="submit" value="Buscar" />
 </form>
-
 <p>Valor de busqueda: {{modelo}}</p>
 
 {% if paletas %}
 <ul>
     {% for paleta in paletas %}
-    <li>{{paleta.marca}} - {{paleta.modelo}}</li>
+    <li>{{paleta.marca}} - {{paleta.modelo}} 
+        || <a href={% url "editar_paleta" paleta.id %}>Editar</a>
+        ||<a href={% url "borrar_paleta" paleta.id %}>Borrar</a></li>
     {% endfor %}
 </ul>
 {% else %}
