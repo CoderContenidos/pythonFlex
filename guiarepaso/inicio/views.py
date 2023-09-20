@@ -14,3 +14,6 @@ def anio_de_nacimiento(request, edad):
 
 def bienvenida(request):
     return render(request, 'inicio/bienvenida.html')
+
+def inicio(request):
+    return render(request, 'inicio/inicio.html')
