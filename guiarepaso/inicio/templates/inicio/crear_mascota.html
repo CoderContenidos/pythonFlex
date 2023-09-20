@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Crear mascota</title>
+    </head>
+    <body>
+        <h2>{{mascota.nombre}} - {{mascota.edad}}</h2>
+        {% if mascota.fecha.day > 15 %}
+        <ol>
+            {% for letra in mascota.nombre %}
+            <li>{{letra}}</li>
+            {% endfor %}
+        </ol>
+        {% endif %}
+    </body>
+</html>

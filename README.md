@@ -79,6 +79,28 @@ Con esto dejaremos todo lo que tenia cada rama (cada carpeta de actividades) en 
 Crear un proyecto de Django siguiendo los pasos vistos en clase.
 Este proyecto debera contar con 2 vistas:
 
-1. La primera debera enviar por HttpResponse un string que indique en que año aproximadamente nacio una persona si le pasamos por la url la edad.
+1. La primera debera enviar por HttpResponse un string que indique en que año aproximadamente nacio una persona si le pasamos por la url la edad (para revisar si un string es solo numerico se puede usar el metodo .isnumeric() de los strings que devuelve True en caso de que sean solo numeros).
 2. La segunda solo requerira que en lugar de pasarle un string como argumento al HttpResponse se le pase un template en el cual se mostrara un mensaje que diga "Bienvenidos".
 La url de acceso debera ser 'bienvenida/'.
+
+## Semana 10
+
+### Actividad 1: Trabajemos con apps
+
+A partir de este punto las actividades siguientes se centraran en la modificacion y mejora del proyecto que se arranco en la actividad 2 de la semana 9.
+Teniendo esto en cuenta, realizar las siguientes modificaciones:
+
+1. Crear una app 'inicio' a la cual le trasladaremos las vistas creadas en la actividad pasada. Recordar modificar el setting.py para que nuestro proyecto reconozca la app creada. (una vez trasladadas las vistas eliminar el archivo views.py que quedo vacio)
+2. Generar el archivo urls.py para nuestra app y agregar el codigo correspondiente en el urls.py que se encuentra con el settings.py para que se conecte al urls.py de nuestra app ( uso de la funcionalidad "include" ).
+3. Cambiar la carga actual de templates en las vistas por el uso de render (el shortcut). Cambiar la ubicacion de los templates para que esten dentro de la app que le corresponda.
+
+### Actividad 2: Usemos un template predefinido
+
+Buscar en [starbootstrap](https://startbootstrap.com/?showAngular=false&showPro=false&showVue=false) un template que te guste, descargalo e implementalo (con los cambios que sientas necesario en el html) en el proyecto en una vista llamada inicio dentro de la app inicio. Para esta vista definir el path de la url vacio.
+
+### Actividad 3: Guardo y muestro
+
+1. Crear un modelo que cuente con 3 atributos: nombre(charfield), edad(integerfield) y fecha(datefield). Para este modelo agregaremos una vista que tome por url 2 parametros, uno para el charfield, otro para el integerfield y el datefield lo rellenaremos con la fecha del momento cuando se crea. Teniendo estos datos en la vista generaremos un objeto para guardarlo en la base de datos y, tambien, para pasarlo por contexto a un template que crearemos.
+2. El template del punto anterior debera mostrar nombre y edad. Ademas, en caso que el dia del campo fecha sea mayor a 15 se debera mostrar en un listado cada letra del nombre.
+
+**Recordatorio**: Una vez creado un modelo ejecutar el comando makemigrations y luego migrate para que se plasme la creacion del modelo en la bd.
