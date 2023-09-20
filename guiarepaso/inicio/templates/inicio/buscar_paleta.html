@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <table>
+                {{paleta_formulario}}
+            </table>
+            <input type="submit" value="Buscar" />
+        </form>
+
+        <p>Valor de busqueda: {{modelo}}</p>
+
+        {% if paletas %}
+        <ul>
+            {% for paleta in paletas %}
+            <li>{{paleta.marca}} - {{paleta.modelo}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No se encontraron paletas.</p>
+        {% endif %}
+    </body>
+</html>
