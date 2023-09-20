@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import datetime
 from django.http import HttpResponse
 from django.template import Template, Context
@@ -29,11 +29,17 @@ def crear_paleta(request):
       if request.method == "POST":
             paleta_formulario = PaletaFormulario(request.POST)
             if paleta_formulario.is_valid():
-                  informacion = paleta_formulario.cleaned_data
-                  paleta = Paleta(marca=informacion["marca"], modelo=informacion["modelo"], anio=informacion["anio"], nueva=informacion["nueva"])
-                  paleta.save()
-                  paleta_formulario = PaletaFormulario()
-                  return render(request, "inicio/crear_paleta.html", {'paleta_formulario': paleta_formulario,'mensaje': 'Se creo correctamente la paleta.'})
+                informacion = paleta_formulario.cleaned_data
+                paleta = Paleta(marca=informacion["marca"], modelo=informacion["modelo"], anio=informacion["anio"], nueva=informacion["nueva"])
+                paleta.save()
+                
+                # v1
+                paleta_formulario = PaletaFormulario()
+                return render(request, "inicio/crear_paleta.html", {'paleta_formulario': paleta_formulario,'mensaje': 'Se creo correctamente la paleta.'})
+                
+                # # v2 
+                # return redirect('buscar_paleta')
+                    
       else:
         paleta_formulario = PaletaFormulario()
       return render(request, "inicio/crear_paleta.html", {"paleta_formulario": paleta_formulario})
