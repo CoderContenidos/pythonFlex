@@ -13,3 +13,7 @@ class Paleta(models.Model):
     anio = models.IntegerField()
     nueva = models.BooleanField(default=True)
     
+    def __str__(self):
+        return f'{self.marca} - {self.modelo}'
+    
+    
