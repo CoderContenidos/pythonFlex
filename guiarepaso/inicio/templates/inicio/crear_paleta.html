@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Crear Paleta</title>
-    </head>
-    <body>
-        <p>{{mensaje}}</p>
-        <form action="" method="post">
-            {% csrf_token %}
-            <table>
-                {{paleta_formulario.as_table}}
-            </table>
-            <input type="submit" value="Crear" />
-        </form>
-    </body>
-</html>
+{% extends "base.html" %} {% block title_head %}Crear paletas {% endblock title_head %} {% block h1_header %}Crear
+paletas {%endblock h1_header %} {% block main_content %}
+<p>{{mensaje}}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{paleta_formulario.as_table}}
+    </table>
+    <input type="submit" value="Crear" />
+</form>
+{% endblock main_content %}
