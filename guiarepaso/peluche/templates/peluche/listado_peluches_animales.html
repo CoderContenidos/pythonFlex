@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title_head %}Listado peluches{% endblock title_head %} {% block h1_header %} Listado
+peluches{%endblock h1_header %} {% block main_content %}
+<a href={% url "crear_peluche_animal" %}>Crear Peluche</a>
+<form action="">
+    {{form}}
+    <input type="submit" value="Buscar" />
+</form>
+<p>Valor de busqueda: {{palabra_de_busqueda}}</p>
+
+{% if peluches_animales %}
+<ul>
+    {% for peluche in peluches_animales %}
+    <li>Animal: {{peluche.animal}} - Altura: {{peluche.altura}} 
+        || <a href={% url "detalle_peluche_animal" peluche.id %}>Detalle</a>
+        || <a href={% url "actualizar_peluche_animal" peluche.id %}>Actualizar</a>
+        || <a href={% url "eliminar_peluch_animal" peluche.id %}>Borrar</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron peluches.</p>
+{% endif %}{% endblock main_content %}
