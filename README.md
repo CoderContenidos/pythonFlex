@@ -74,6 +74,8 @@ Sigamos las siguientes instrucciones para practicar un poco el uso de git…
 
 Con esto dejaremos todo lo que tenia cada rama (cada carpeta de actividades) en la rama principal.
 
+**IMPORTANTE**: A partir de la siguiente actividad, cada semana tiene su propia rama con las actividades resueltas. Esto se maneja de esta forma, debido a que haremos un proyecto de django repasando todo lo visto en clases y con el manejo de ramas se puede ir viendo el progrreso escalonado delimitado por lo que van solicitando las actividades.
+
 ### Actividad 2: Repaso creacion de proyecto
 
 Crear un proyecto de Django siguiendo los pasos vistos en clase.
@@ -144,3 +146,17 @@ Agregarle al proyecto una nueva app llamada cuentas y luego:
 1. Agregar a cuentas un vista para el login (usar un formulario custom que pida el mail ademas de el usuario y la contraseña) y una vista para el logout.
 2. Ahora, una vista para que un usuario pueda registrarse en nuestra app.
 3. Agregar a las vistas de edicion y borrado de los modelos creados hasta el momento (Paleta y PelucheAnimal) el decorador o mixin, segun corresponda, para limitar el acceso estas funcionalidades a personas que no estan logueadas.
+
+## Semana 13
+
+### Actividad 1: Mas datos
+
+Teniendo en cuenta que pocos son los datos que podemos guardar de un usuario, crea un modelo que este relacionado con User y permita guardar un avatar y algun dato extra sobre el usuario (ej, pagina, biografia, fecha de nacimiento, etc).
+
+### Actividad 2: El perfil
+
+Agregar un apartado donde el usuario pueda ver su informacion (nombre, apellido, avatar, etc) y tambien que tenga un acceso a un apartado para modificar dicha informacion (tambien que se pueda modificar la contraseña).
+
+### Actividad 3: Ver y describir el peluche
+
+Agregarle al peluche animal un atributo para cargarle una imagen y una descripcion (esta permitir que sea con formato de texto enriquecido). Ambos campos deben ser incluidos en todas las vistas relacionadas a peluche animal.
