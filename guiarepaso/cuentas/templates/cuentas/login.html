@@ -1,0 +1,7 @@
+{% extends "base.html" %} {% block title_head %}Iniciar sesion {% endblock title_head %} {% block h1_header %}Iniciar sesion{% endblock h1_header %} 
+{%block main_content %}
+<form action="" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Inciar sesion</button>
+</form>
+{% endblock main_content %}
