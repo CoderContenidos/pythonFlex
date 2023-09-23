@@ -1,0 +1,6 @@
+{% extends "base.html" %} {% block title_head %}Registro{% endblock title_head%} {% block h1_header %}Registro{% endblock h1_header %}{% block main_content %}
+<form action="" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Registrate!</button>
+</form>
+{% endblock main_content %}
