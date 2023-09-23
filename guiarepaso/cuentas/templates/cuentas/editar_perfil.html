@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title_head %}Editar perfil {% endblock title_head %} {% block h1_header %}Editar perfil{% endblock h1_header %} {%block main_content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <button>Modificar</button>
+</form>
+{% endblock main_content %}

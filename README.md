@@ -147,14 +147,14 @@ Agregarle al proyecto una nueva app llamada cuentas y luego:
 
 ## Semana 13
 
-### Act 1
+### Actividad 1: Mas datos
 
 Teniendo en cuenta que pocos son los datos que podemos guardar de un usuario, crea un modelo que este relacionado con User y permita guardar un avatar y algun dato extra sobre el usuario (ej, pagina, biografia, fecha de nacimiento, etc).
 
-### Act 2
+### Actividad 2: El perfil
 
-Agregar un apartado donde el usuario pueda ver su informacion y tambien que tenga un acceso a un apartado para modificar dicha informacion (tambien que se pueda modificar la contraseña).
+Agregar un apartado donde el usuario pueda ver su informacion (nombre, apellido, avatar, etc) y tambien que tenga un acceso a un apartado para modificar dicha informacion (tambien que se pueda modificar la contraseña).
 
-### Act 3
+### Actividad 3: Ver y describir el peluche
 
 Agregarle al peluche animal un atributo para cargarle una imagen y una descripcion (esta permitir que sea con formato de texto enriquecido). Ambos campos deben ser incluidos en todas las vistas relacionadas a peluche animal.
