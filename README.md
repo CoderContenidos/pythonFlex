@@ -74,6 +74,8 @@ Sigamos las siguientes instrucciones para practicar un poco el uso de git…
 
 Con esto dejaremos todo lo que tenia cada rama (cada carpeta de actividades) en la rama principal.
 
+**IMPORTANTE**: A partir de la siguiente actividad, cada semana tiene su propia rama con las actividades resueltas. Esto se maneja de esta forma, debido a que haremos un proyecto de django repasando todo lo visto en clases y con el manejo de ramas se puede ir viendo el progrreso escalonado delimitado por lo que van solicitando las actividades.
+
 ### Actividad 2: Repaso creacion de proyecto
 
 Crear un proyecto de Django siguiendo los pasos vistos en clase.
