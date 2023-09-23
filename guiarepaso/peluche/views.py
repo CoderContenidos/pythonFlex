@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from peluche.models import PelucheAnimal
 from peluche.forms import BusquedaPelucheAnimalFormulario
@@ -12,7 +13,7 @@ class PelucheAnimalCreateView(CreateView):
     template_name = "peluche/crear_peluche_animal.html"
     success_url = reverse_lazy('listado_peluches_animales')
 
-class PelucheAnimalDeleteView(DeleteView):
+class PelucheAnimalDeleteView(LoginRequiredMixin,DeleteView):
     model = PelucheAnimal
     template_name = "peluche/eliminar_peluche_animal.html"
     success_url = reverse_lazy('listado_peluches_animales')
@@ -41,7 +42,7 @@ class PelucheAnimalListView(ListView):
         context['palabra_de_busqueda'] = self.request.GET.get('animal', '')
         return context
 
-class PelucheAnimalUpdateView(UpdateView):
+class PelucheAnimalUpdateView(LoginRequiredMixin, UpdateView):
     model = PelucheAnimal
     fields = ['animal','altura','fecha']
     template_name = "peluche/actualizar_peluche_animal.html"
