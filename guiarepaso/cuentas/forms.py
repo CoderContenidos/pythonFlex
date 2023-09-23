@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextFormField
 
 
 class UserRegisterForm(UserCreationForm):
@@ -20,7 +21,7 @@ class UserEditForm(UserChangeForm):
     last_name = forms.CharField(label='Apellido')
     first_name = forms.CharField(label='Nombre')
     avatar = forms.ImageField(label="Avatar", required=False)
-    biografia = forms.CharField(label='Biografía', widget=forms.Textarea)
+    biografia = RichTextFormField(label='Biografía', required=False)
 
 
     class Meta:

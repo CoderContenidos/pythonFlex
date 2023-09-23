@@ -9,7 +9,7 @@ from peluche.forms import BusquedaPelucheAnimalFormulario
 
 class PelucheAnimalCreateView(CreateView):
     model = PelucheAnimal
-    fields = ['animal','altura','fecha']
+    fields = ['animal','altura','fecha', 'imagen', 'descripcion']
     template_name = "peluche/crear_peluche_animal.html"
     success_url = reverse_lazy('listado_peluches_animales')
 
@@ -44,6 +44,6 @@ class PelucheAnimalListView(ListView):
 
 class PelucheAnimalUpdateView(LoginRequiredMixin, UpdateView):
     model = PelucheAnimal
-    fields = ['animal','altura','fecha']
+    fields = ['animal','altura','fecha', 'imagen', 'descripcion']
     template_name = "peluche/actualizar_peluche_animal.html"
     success_url = reverse_lazy('listado_peluches_animales')

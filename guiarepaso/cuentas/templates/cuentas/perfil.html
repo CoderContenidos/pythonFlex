@@ -5,7 +5,7 @@
     <li>Nombre: {{request.user.first_name}}</li>
     <li>Apellido: {{request.user.last_name}}</li>
     <li>Email: {{request.user.email}}</li>
-    <li>Biografia: {{request.user.infoextra.biografia}}</li>
+    <li>Biografia: {{request.user.infoextra.biografia | safe}}</li>
     <li>
         Avatar: {% if request.user.infoextra.avatar %}
         <img

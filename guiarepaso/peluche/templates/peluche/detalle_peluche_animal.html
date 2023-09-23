@@ -1,8 +1,17 @@
-{% extends "base.html" %} {% block title_head %}Detalle peluche{% endblock title_head %} {% block h1_header %} Detalle
-peluche{%endblock h1_header %} {% block main_content %}
+{% extends "base.html" %} {% block title_head %}Detalle peluche{% endblock title_head %} {% block h1_header %} Detalle peluche{%endblock h1_header %} {% block main_content %}
 <ul>
     <li>Animal: {{peluche.animal}}</li>
     <li>Altura: {{peluche.altura}}</li>
-    <li>fecha: {{peluche.fecha}}</li>
+    <li>Fecha: {{peluche.fecha}}</li>
+    <li>Description: {{peluche.descripcion | safe}}</li>
+    <li>
+        Imagen: {% if peluche.imagen %}
+        <img
+            src="{{peluche.imagen.url}}"
+            alt="Imagen del peluche"
+            height="200px"
+        />
+        {% endif %}
+    </li>
 </ul>
 {% endblock main_content %}

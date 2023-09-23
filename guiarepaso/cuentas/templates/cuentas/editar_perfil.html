@@ -2,7 +2,7 @@
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
-        {{form}}
+        {{form.media}} {{form}}
     </table>
     <button>Modificar</button>
 </form>
