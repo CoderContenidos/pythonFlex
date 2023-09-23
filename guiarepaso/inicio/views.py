@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from inicio.models import Mascota, Paleta
 from inicio.forms import PaletaFormulario, PaletaFormularioBusqueda
+from django.contrib.auth.decorators import login_required
 
 
 def anio_de_nacimiento(request, edad):
@@ -51,7 +52,8 @@ def buscar_paleta(request):
     paletas = Paleta.objects.filter(modelo__icontains=modelo)
     paleta_formulario = PaletaFormularioBusqueda()
     return render(request, 'inicio/buscar_paleta.html', {'paleta_formulario': paleta_formulario, 'paletas': paletas, 'modelo': modelo})
-    
+
+@login_required
 def editar_paleta(request, paleta_id):
     paleta = Paleta.objects.get(id=paleta_id)
     mensaje = ''
@@ -76,6 +78,7 @@ def editar_paleta(request, paleta_id):
             'anio': paleta.anio,'nueva': paleta.nueva,})
     return render(request, "inicio/editar_paleta.html", {"paleta_formulario": paleta_formulario, 'mensaje': mensaje})
 
+@login_required
 def borrar_paleta(request, paleta_id):
     paleta = Paleta.objects.get(id=paleta_id)
     paleta.delete()
